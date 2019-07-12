@@ -5,17 +5,14 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Add {
   public int getSumOfEvens(int leftBorder, int rightBorder) {
-    List<Integer> numberList = new ArrayList<>();
     int i = leftBorder < rightBorder ? leftBorder : rightBorder;
     int j = leftBorder < rightBorder ? rightBorder : leftBorder;
-    for (; i <= j; i++) {
-      numberList.add(i);
-    }
-    return numberList.stream().filter(num -> num % 2 == 0).mapToInt(x -> x).sum();
+    return IntStream.range(i, j+1).filter(num -> num % 2 == 0).sum();
   }
 
   public int getSumOfOdds(int leftBorder, int rightBorder) {
